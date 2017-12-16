@@ -61,7 +61,8 @@ public class ClientController {
     }
 
     @RequestMapping(value = "/{clientId}/patients/{patientId}", method = RequestMethod.POST)
-    public ResponseEntity<?> addPatient(@PathVariable(value = "clientId") final Long clientId, @PathVariable(value = "patientId") final Long patientId) {
+    public ResponseEntity<?> addPatient(@PathVariable(value = "clientId") final Long clientId,
+                                        @PathVariable(value = "patientId") final Long patientId) {
         Client client = clientService.getById(clientId);
         if (client == null) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("The client not found!");

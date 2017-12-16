@@ -1,11 +1,13 @@
 package com.slobodenyuk.vetclinic.controller;
 
+import com.slobodenyuk.vetclinic.dto.DoctorDto;
 import com.slobodenyuk.vetclinic.entity.Doctor;
 import com.slobodenyuk.vetclinic.entity.Patient;
 import com.slobodenyuk.vetclinic.service.DoctorService;
 import com.slobodenyuk.vetclinic.service.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,12 +23,12 @@ public class DoctorController {
     private PatientService patientService;
 
     @RequestMapping(method = RequestMethod.GET)
-    public ResponseEntity<List<Doctor>> getAllDoctors() {
+    public ResponseEntity<List<Doctor>> getDoctors() {
         return ResponseEntity.ok(doctorService.getAll());
     }
 
     @RequestMapping(value = "/{position}", method = RequestMethod.GET)
-    public ResponseEntity<List<Doctor>> getAllFilteredDoctors(@PathVariable(value = "position") final String position) {
+    public ResponseEntity<List<Doctor>> getDoctors(@PathVariable(value = "position") final String position) {
         return ResponseEntity.ok(doctorService.getAllByPosition(position));
     }
 
@@ -39,29 +41,24 @@ public class DoctorController {
         return ResponseEntity.ok(doctor);
     }
 
-    @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<?> addDoctor(@RequestParam(value = "name") final String name,
-                                       @RequestParam(value = "position") final String position,
-                                       @RequestParam(value = "phone") final String phone) {
-        Doctor newDoctor = doctorService.add(new Doctor(name, position, phone));
-        if (newDoctor == null) {
+    @RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> addDoctor(@RequestBody DoctorDto doctorDto) {
+        Doctor doctor = doctorService.add(new Doctor(doctorDto.getName(), doctorDto.getPosition(), doctorDto.getPhone()));
+        if (doctor == null) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("New doctor was not created!");
         }
         return ResponseEntity.status(HttpStatus.CREATED).body("The Doctor was successfully created");
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-    public ResponseEntity<?> updateDoctor(@PathVariable(value = "id") final Long id,
-                                          @RequestParam(value = "name") final String name,
-                                          @RequestParam(value = "position") final String position,
-                                          @RequestParam(value = "phone") final String phone) {
-        Doctor doctor = doctorService.getById(id);
+    @RequestMapping(value = "/{id}", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> updateDoctor(@RequestBody DoctorDto doctorDto) {
+        Doctor doctor = doctorService.getById(doctorDto.getId());
         if (doctor == null) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("The doctor not found!");
         }
-        doctor.setName(name);
-        doctor.setPosition(position);
-        doctor.setPhone(phone);
+        doctor.setName(doctorDto.getName());
+        doctor.setPosition(doctorDto.getPosition());
+        doctor.setPhone(doctorDto.getPhone());
         Doctor updatedDoctor = doctorService.update(doctor);
         if (updatedDoctor == null) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Update error!");
@@ -70,7 +67,7 @@ public class DoctorController {
     }
 
     @RequestMapping(value = "/{id}/patients", method = RequestMethod.GET)
-    public ResponseEntity<?> getAllPatientsByDoctor(@PathVariable(value = "id") final Long id) {
+    public ResponseEntity<?> getPatientsOfDoctor(@PathVariable(value = "id") final Long id) {
         Doctor doctor = doctorService.getById(id);
         if (doctor == null) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("The doctor not found!");

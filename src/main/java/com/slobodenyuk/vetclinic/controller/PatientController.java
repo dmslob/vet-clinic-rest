@@ -1,7 +1,6 @@
 package com.slobodenyuk.vetclinic.controller;
 
 import com.slobodenyuk.vetclinic.entity.Patient;
-import com.slobodenyuk.vetclinic.service.DoctorService;
 import com.slobodenyuk.vetclinic.service.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -22,12 +21,12 @@ public class PatientController {
     }
 
     @RequestMapping(value = "/{type}", method = RequestMethod.GET)
-    public ResponseEntity<?> getAllPatientsByType(@PathVariable(value = "type") final String type) {
+    public ResponseEntity<?> getPatients(@PathVariable(value = "type") final String type) {
         return ResponseEntity.ok(patientService.getByType(type));
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public ResponseEntity<?> getById(@PathVariable(value = "id") final Long id) {
+    public ResponseEntity<?> getPatient(@PathVariable(value = "id") final Long id) {
         Patient patient = patientService.getById(id);
         if (patient == null) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("The patient not found!");
