@@ -1,6 +1,7 @@
 package com.slobodenyuk.vetclinic.controller;
 
 import com.slobodenyuk.vetclinic.dto.DoctorDto;
+import com.slobodenyuk.vetclinic.dto.PatientDto;
 import com.slobodenyuk.vetclinic.entity.Doctor;
 import com.slobodenyuk.vetclinic.entity.Patient;
 import com.slobodenyuk.vetclinic.service.DoctorService;
@@ -27,13 +28,13 @@ public class DoctorController {
         return ResponseEntity.ok(doctorService.getAll());
     }
 
-    @RequestMapping(value = "/{position}", method = RequestMethod.GET)
+    @RequestMapping(value = "/position/{position}", method = RequestMethod.GET)
     public ResponseEntity<List<Doctor>> getDoctors(@PathVariable(value = "position") final String position) {
         return ResponseEntity.ok(doctorService.getAllByPosition(position));
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public ResponseEntity<?> getDoctor(@PathVariable(value = "id") final Long id) {
+    public ResponseEntity<?> getDoctors(@PathVariable(value = "id") final Long id) {
         Doctor doctor = doctorService.getById(id);
         if (doctor == null) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("The doctor not found!");
@@ -50,7 +51,7 @@ public class DoctorController {
         return ResponseEntity.status(HttpStatus.CREATED).body("The Doctor was successfully created");
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> updateDoctor(@RequestBody DoctorDto doctorDto) {
         Doctor doctor = doctorService.getById(doctorDto.getId());
         if (doctor == null) {
@@ -76,17 +77,12 @@ public class DoctorController {
     }
 
     @RequestMapping(value = "/{doctorId}/patients", method = RequestMethod.POST)
-    public ResponseEntity<?> addPatient(@PathVariable(value = "doctorId") final Long doctorId,
-                                        @RequestParam(value = "name") final String name,
-                                        @RequestParam(value = "age") final Integer age,
-                                        @RequestParam(value = "type") final String type,
-                                        @RequestParam(value = "illness") final Boolean illness) {
-
+    public ResponseEntity<?> addPatient(@RequestBody PatientDto patientDto, @PathVariable final Long doctorId) {
         Doctor doctor = doctorService.getById(doctorId);
         if (doctor == null) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("The doctor not found!");
         }
-        Patient patient = new Patient(name, age, type, illness);
+        Patient patient = new Patient(patientDto.getName(), patientDto.getAge(), patientDto.getType(), patientDto.isIllness());
         patient.setDoctor(doctor);
         Patient newPatient = patientService.add(patient);
         if (newPatient == null) {
