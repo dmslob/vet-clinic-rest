@@ -32,7 +32,7 @@ public class ClientController {
     public ResponseEntity<?> getClient(@PathVariable(value = "id") final Long id) {
         Client client = clientService.getById(id);
         if (client == null) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("The client not found!");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("The client is not found!");
         }
         return ResponseEntity.ok(client);
     }
@@ -41,7 +41,7 @@ public class ClientController {
     public ResponseEntity<?> deleteClient(@PathVariable(value = "id") final Long id) {
         Client client = clientService.getById(id);
         if (client == null) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("The client not found!");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("The client is not found!");
         }
         clientService.delete(id);
         return ResponseEntity.ok().body("The client was successfully deleted");
@@ -65,11 +65,11 @@ public class ClientController {
                                         @PathVariable(value = "patientId") final Long patientId) {
         Client client = clientService.getById(clientId);
         if (client == null) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("The client not found!");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("The client is not found!");
         }
         Patient patient = patientService.getById(patientId);
         if (patient == null) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("The patient not found!");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("The patient is not found!");
         }
         clientService.addPatient(client, patient);
         return ResponseEntity.status(HttpStatus.CREATED).body("The patient was successfully created");
@@ -79,7 +79,7 @@ public class ClientController {
     public ResponseEntity<?> updateClient(@RequestBody ClientDto clientDto) {
         Client client = clientService.getById(clientDto.getId());
         if (client == null) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("The client not found!");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("The client is not found!");
         }
         client.setName(clientDto.getName());
         client.setPhone(clientDto.getPhone());

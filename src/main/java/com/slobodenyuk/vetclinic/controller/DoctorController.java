@@ -37,7 +37,7 @@ public class DoctorController {
     public ResponseEntity<?> getDoctors(@PathVariable(value = "id") final Long id) {
         Doctor doctor = doctorService.getById(id);
         if (doctor == null) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("The doctor not found!");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("The doctor is not found!");
         }
         return ResponseEntity.ok(doctor);
     }
@@ -55,7 +55,7 @@ public class DoctorController {
     public ResponseEntity<?> updateDoctor(@RequestBody DoctorDto doctorDto) {
         Doctor doctor = doctorService.getById(doctorDto.getId());
         if (doctor == null) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("The doctor not found!");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("The doctor is not found!");
         }
         doctor.setName(doctorDto.getName());
         doctor.setPosition(doctorDto.getPosition());
@@ -71,7 +71,7 @@ public class DoctorController {
     public ResponseEntity<?> getPatientsOfDoctor(@PathVariable(value = "id") final Long id) {
         Doctor doctor = doctorService.getById(id);
         if (doctor == null) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("The doctor not found!");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("The doctor is not found!");
         }
         return ResponseEntity.ok(patientService.getByDoctor(doctor));
     }
@@ -80,7 +80,7 @@ public class DoctorController {
     public ResponseEntity<?> addPatient(@RequestBody PatientDto patientDto, @PathVariable final Long doctorId) {
         Doctor doctor = doctorService.getById(doctorId);
         if (doctor == null) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("The doctor not found!");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("The doctor is not found!");
         }
         Patient patient = new Patient(patientDto.getName(), patientDto.getAge(), patientDto.getType(), patientDto.isIllness());
         patient.setDoctor(doctor);

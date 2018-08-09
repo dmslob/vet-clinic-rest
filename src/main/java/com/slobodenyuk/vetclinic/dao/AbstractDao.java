@@ -71,5 +71,6 @@ public abstract class AbstractDao<T extends AbstractEntity> {
     public List<T> findAll() {
         return getCurrentSession().createQuery("from " + getGenericType().getSimpleName() + " order by id").list();
     }
+
     protected abstract Class<T> getGenericType();
 }
