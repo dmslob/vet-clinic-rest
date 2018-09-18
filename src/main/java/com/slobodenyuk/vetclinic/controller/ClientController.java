@@ -11,7 +11,10 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Random;
 
 @RestController
 @RequestMapping("clients")
@@ -25,6 +28,12 @@ public class ClientController {
 
     @RequestMapping(method = RequestMethod.GET)
     public ResponseEntity<List<Client>> getClients() {
+//        Map<Integer, String> dataMap = new HashMap<>();
+//        Random r = new Random();
+//        boolean f = true;
+//        while (f) {
+//            dataMap.put(r.nextInt(), String.valueOf(r.nextInt()));
+//        }
         return ResponseEntity.ok(clientService.getAll());
     }
 
