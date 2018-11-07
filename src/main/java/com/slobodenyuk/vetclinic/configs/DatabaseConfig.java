@@ -15,16 +15,16 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @Configuration
 @EnableTransactionManagement
 public class DatabaseConfig {
-    @Value("${db.driver}")
+    @Value("${com.slobodenyuk.vetclinic.db.driver}")
     private String DB_DRIVER;
 
-    @Value("${db.password}")
+    @Value("${com.slobodenyuk.vetclinic.db.password}")
     private String DB_PASSWORD;
 
-    @Value("${db.url}")
+    @Value("${com.slobodenyuk.vetclinic.db.url}")
     private String DB_URL;
 
-    @Value("${db.username}")
+    @Value("${com.slobodenyuk.vetclinic.db.username}")
     private String DB_USERNAME;
 
     //@Value("${hibernate.dialect}")
