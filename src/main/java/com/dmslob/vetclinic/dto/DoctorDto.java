@@ -1,4 +1,4 @@
-package com.slobodenyuk.vetclinic.dto;
+package com.dmslob.vetclinic.dto;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;

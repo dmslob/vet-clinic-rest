@@ -1,4 +1,4 @@
-package com.slobodenyuk.vetclinic;
+package com.dmslob.vetclinic;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

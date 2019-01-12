@@ -1,4 +1,4 @@
-package com.slobodenyuk.vetclinic.entity;
+package com.dmslob.vetclinic.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

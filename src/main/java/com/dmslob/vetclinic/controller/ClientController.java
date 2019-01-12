@@ -1,10 +1,10 @@
-package com.slobodenyuk.vetclinic.controller;
+package com.dmslob.vetclinic.controller;
 
-import com.slobodenyuk.vetclinic.dto.ClientDto;
-import com.slobodenyuk.vetclinic.entity.Client;
-import com.slobodenyuk.vetclinic.entity.Patient;
-import com.slobodenyuk.vetclinic.service.ClientService;
-import com.slobodenyuk.vetclinic.service.PatientService;
+import com.dmslob.vetclinic.dto.ClientDto;
+import com.dmslob.vetclinic.entity.Client;
+import com.dmslob.vetclinic.entity.Patient;
+import com.dmslob.vetclinic.service.ClientService;
+import com.dmslob.vetclinic.service.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;

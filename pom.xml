@@ -116,7 +116,7 @@
                 <version>1.5.4.RELEASE</version>
                 <configuration>
                     <fork>true</fork>
-                    <mainClass>com.slobodenyuk.vetclinic.Application</mainClass>
+                    <mainClass>com.dmslob.vetclinic.Application</mainClass>
                 </configuration>
                 <executions>
                     <execution>
@@ -136,7 +136,7 @@
                         <manifest>
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>lib/</classpathPrefix>
-                            <mainClass>com.slobodenyuk.vetclinic.Application</mainClass>
+                            <mainClass>com.dmslob.vetclinic.Application</mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>

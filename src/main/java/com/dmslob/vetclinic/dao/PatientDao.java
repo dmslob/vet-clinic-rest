@@ -1,7 +1,7 @@
-package com.slobodenyuk.vetclinic.dao;
+package com.dmslob.vetclinic.dao;
 
-import com.slobodenyuk.vetclinic.entity.Doctor;
-import com.slobodenyuk.vetclinic.entity.Patient;
+import com.dmslob.vetclinic.entity.Doctor;
+import com.dmslob.vetclinic.entity.Patient;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

@@ -1,8 +1,8 @@
-package com.slobodenyuk.vetclinic.service;
+package com.dmslob.vetclinic.service;
 
-import com.slobodenyuk.vetclinic.dao.PatientDao;
-import com.slobodenyuk.vetclinic.entity.Doctor;
-import com.slobodenyuk.vetclinic.entity.Patient;
+import com.dmslob.vetclinic.dao.PatientDao;
+import com.dmslob.vetclinic.entity.Doctor;
+import com.dmslob.vetclinic.entity.Patient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

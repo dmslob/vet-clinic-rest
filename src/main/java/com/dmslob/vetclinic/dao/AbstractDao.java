@@ -1,6 +1,6 @@
-package com.slobodenyuk.vetclinic.dao;
+package com.dmslob.vetclinic.dao;
 
-import com.slobodenyuk.vetclinic.entity.AbstractEntity;
+import com.dmslob.vetclinic.entity.AbstractEntity;
 
 import java.util.List;
 
@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
 public abstract class AbstractDao<T extends AbstractEntity> {
+
     @Autowired
     private SessionFactory sessionFactory;
 

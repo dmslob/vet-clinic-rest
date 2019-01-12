@@ -1,4 +1,4 @@
-package com.slobodenyuk.vetclinic.configs;
+package com.dmslob.vetclinic.configs;
 
 import java.util.Properties;
 
@@ -7,7 +7,6 @@ import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Profile;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
@@ -15,16 +14,17 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @Configuration
 @EnableTransactionManagement
 public class DatabaseConfig {
-    @Value("${com.slobodenyuk.vetclinic.db.driver}")
+
+    @Value("${com.dmslob.vetclinic.db.driver}")
     private String DB_DRIVER;
 
-    @Value("${com.slobodenyuk.vetclinic.db.password}")
+    @Value("${com.dmslob.vetclinic.db.password}")
     private String DB_PASSWORD;
 
-    @Value("${com.slobodenyuk.vetclinic.db.url}")
+    @Value("${com.dmslob.vetclinic.db.url}")
     private String DB_URL;
 
-    @Value("${com.slobodenyuk.vetclinic.db.username}")
+    @Value("${com.dmslob.vetclinic.db.username}")
     private String DB_USERNAME;
 
     //@Value("${hibernate.dialect}")

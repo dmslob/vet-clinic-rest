@@ -1,7 +1,7 @@
-package com.slobodenyuk.vetclinic.controller;
+package com.dmslob.vetclinic.controller;
 
-import com.slobodenyuk.vetclinic.entity.Patient;
-import com.slobodenyuk.vetclinic.service.PatientService;
+import com.dmslob.vetclinic.entity.Patient;
+import com.dmslob.vetclinic.service.PatientService;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,6 +44,7 @@ public class PatientController {
         LOGGER.info("Delete Patient by ID = " + id);
         Patient patient = patientService.getById(id);
         if (patient == null) {
+            LOGGER.info("The patient is not found!");
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("The patient is not found!");
         }
         patientService.delete(patient);

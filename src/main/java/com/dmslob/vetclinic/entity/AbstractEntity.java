@@ -1,4 +1,4 @@
-package com.slobodenyuk.vetclinic.entity;
+package com.dmslob.vetclinic.entity;
 
 import java.io.Serializable;
 import java.util.Objects;
