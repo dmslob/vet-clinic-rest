@@ -8,6 +8,7 @@ import java.util.List;
 @Repository
 @SuppressWarnings("unchecked")
 public class DoctorDao extends AbstractDao<Doctor> {
+
     public List<Doctor> findAllByPosition(String position) {
         return getCurrentSession().createQuery("from Doctor d where d.position=:pos")
                 .setString("pos", position)

@@ -10,6 +10,6 @@
 
     <Loggers>
         # Override log level for specified package
-        <Logger name="com.slobodenyuk.vetclinic" level="INFO"/>
+        <Logger name="com.dmslob.vetclinic" level="INFO"/>
     </Loggers>
 </Configuration>

@@ -7,7 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "doctor")
+@Table(name = "DOCTOR")
 public class Doctor extends AbstractEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

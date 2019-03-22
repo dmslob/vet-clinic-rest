@@ -9,6 +9,7 @@ import java.util.List;
 @Repository
 @SuppressWarnings("unchecked")
 public class PatientDao extends AbstractDao<Patient> {
+
     public List<Patient> getByDoctor(Doctor doctor) {
         return getCurrentSession().createQuery("from Patient p where p.doctor=:doc")
                 .setParameter("doc", doctor)

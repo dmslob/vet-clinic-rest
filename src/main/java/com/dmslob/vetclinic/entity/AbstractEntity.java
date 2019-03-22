@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Objects;
 
 public abstract class AbstractEntity implements Serializable {
+
     public abstract Long getId();
 
     public abstract void setId(Long id);

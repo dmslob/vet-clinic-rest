@@ -11,7 +11,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "client")
+@Table(name = "CLIENT")
 public class Client extends AbstractEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

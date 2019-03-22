@@ -9,7 +9,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "patient")
+@Table(name = "PATIENT")
 public class Patient extends AbstractEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

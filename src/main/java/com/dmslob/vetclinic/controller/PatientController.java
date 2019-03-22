@@ -14,13 +14,14 @@ import java.util.List;
 @RestController
 @RequestMapping("patients")
 public class PatientController {
+
     private static final Logger LOGGER = LogManager.getLogger(PatientController.class);
 
     @Autowired
     private PatientService patientService;
 
     @RequestMapping(method = RequestMethod.GET)
-    public ResponseEntity<List<Patient>> getAllPatients() {
+    public ResponseEntity<List<Patient>> getPatients() {
         return ResponseEntity.ok(patientService.getAll());
     }
 

@@ -34,7 +34,7 @@ public class DoctorController {
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public ResponseEntity<?> getDoctors(@PathVariable(value = "id") final Long id) {
+    public ResponseEntity<?> getDoctor(@PathVariable(value = "id") final Long id) {
         Doctor doctor = doctorService.getById(id);
         if (doctor == null) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("The doctor is not found!");
