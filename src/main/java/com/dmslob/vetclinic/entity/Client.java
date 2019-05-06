@@ -20,7 +20,7 @@ public class Client extends AbstractEntity {
     private String name;
     private String phone;
 
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Patient> pets;
 
     public Client() {

@@ -5,6 +5,8 @@ import com.dmslob.vetclinic.entity.Client;
 import com.dmslob.vetclinic.entity.Patient;
 import com.dmslob.vetclinic.service.ClientService;
 import com.dmslob.vetclinic.service.PatientService;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -17,6 +19,8 @@ import java.util.List;
 @RequestMapping("clients")
 public class ClientController {
 
+    private static final Logger LOGGER = LogManager.getLogger(ClientController.class);
+
     @Autowired
     private ClientService clientService;
 
@@ -25,7 +29,8 @@ public class ClientController {
 
     @RequestMapping(method = RequestMethod.GET)
     public ResponseEntity<List<Client>> getClients() {
-        return ResponseEntity.ok(clientService.getAll());
+        List<Client> clients = clientService.getAll();
+        return ResponseEntity.ok(clients);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
